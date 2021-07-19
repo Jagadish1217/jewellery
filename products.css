@@ -1,0 +1,37 @@
+* {
+    font-family: open-sans-serif !important;
+}
+#head {
+    width: 96%;
+    background-color:rgb(111, 236, 111);
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 10%;
+    font-size: 21px;
+    padding: 2%;
+}
+#head > button {
+    background-color:transparent;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 21px;
+    cursor: pointer;
+}
+#but1:hover {
+   background-color:purple;
+   color: white;
+}
+
+#parent {
+    display: grid;
+    grid-template-columns: repeat(3, 20%);
+    gap: 40px;
+}
+img {
+    width: 80%;
+    height: 80%;
+}
+img:hover {
+    background-image: url("https://images.voylla.com/i/822411/small/bagh-e-fiza-yellow-beads-earrings-vmjai40969-ms-20190605-16067-1nr1f21.jpg");
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            text-align: center;
+            align-items: center;
+            justify-content:center;
+            margin-top: 50px;
+        }
+        #pay {
+           margin-left: 620px;
+           width:20%;
+           border: 1px solid black;
+           padding: 0.5%;
+        }
+        #name {
+            margin-bottom: 20px;
+            width:20%;
+            border: 1px solid black;
+            padding: 0.5%;
+        }
+        #num {
+             margin-bottom: 20px;
+             width:20%;
+             border: 1px solid black;
+             padding: 0.5%;
+        } 
+        #cvv {
+             margin-bottom: 20px;
+             width:20%;
+             border: 1px solid black;
+             padding: 0.5%;
+        }
+        #date {
+            margin-bottom: 20px;
+            width:20%;
+            border: 1px solid black;
+            padding: 0.5%;
+        }
+        #addr {
+            margin-bottom: 20px;
+            width:20%;
+            border: 1px solid black;
+            height: 20px;
+            padding: 0.5%;
+        }
+        h2 {
+            text-align:center;
+            align-items: center;
+            justify-content:center;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="pare"></div>
+    <h2>card details</h2>
+     
+    <form id="form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="name"></br>
+        <label for="number">Card Num</label>
+        <input type="number" id="num" placeholder="card number"></br>
+        <label for="number">CVV</label>
+        <input type="number" id="cvv" placeholder="CVV"></br>
+        <label type="date">year</label>
+        <input type="number" id="date" placeholder="date"></br>
+        adress <input type="text" id="addr" placeholder="adress"></br>
+    </form>
+    <button id="pay" onclick="pay()">place order</button>
+</body>
+</html>
+<script>
+    function pay(f) {
+        let pare = document.getElementById("pare");
+        let arr = JSON.parse(localStorage.getItem(f));
+        arr.forEach(function (x) {
+        let div = document.createElement("div");
+        let name = document.createElement("h3");
+        name.innerHTML = x.name;
+        let number = document.createElement("h3");
+        price.innerHTML = `price: ₹${x.price}`;
+        let img = document.createElement("img");
+        img.src = x.img;
+        let btn = document.createElement("button");
+        btn.innerText = "Add To Cart";
+        btn.onclick = function () {
+            cart(x);
+        };
+        btn.type = "button";
+        div.append(name, price, img, btn);
+        parent.append(div);
+    });
+}
+    
+    function pay() {
+     let arr = [
+         "your order is successfully placed",
+     ];
+     let tim = function (i) {
+         alert(arr[i]);
+     };
+     setTimeout(() => {
+         alert(arr[0]);
+     }, 3000);
+} 
+</script>

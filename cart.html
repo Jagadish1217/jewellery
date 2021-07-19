@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <div id="di">
+    <input type="text" id="disco" placeholder="apply promo">
+    <button id="disc" onclick="apply()">Apply Promo</button>
+    </div>
+    <div id="tot">
+        <h4 id="dis"></h4>
+        <h3 id="pri"></h3>
+        <button onclick="pay()">payment</button>
+    </div>
+
+    <div id="parent"></div>
+    
+</body>
+</html>
+<script>
+    var total = 0;
+    function apply() {
+        var disc = document.getElementById("disco")
+        if(disc.value == "masai30"){
+        sum = sum - sum * (30/100);
+        }
+        pri.innerHTML = `total cost is ₹${sum}`;
+        div.append(disc);
+        
+    }
+    let sum = 0;
+    function show(f) {
+        let arr = JSON.parse(localStorage.getItem(f));
+        let parent = document.getElementById("parent");
+        arr.forEach(function (x) {
+        let div = document.createElement("div");
+        let name = document.createElement("h3");
+        name.innerHTML = x.name;
+        let price = document.createElement("h3");
+        price.innerHTML = `price: ₹${x.price}`;
+        let img = document.createElement("img");
+        img.src = x.img;
+        div.append(name, price, img);
+        parent.append(div);
+        sum += Number(x.price);
+    });
+}
+
+show("cartjewells");
+let len = JSON.parse(localStorage.getItem("cartjewells")).length
+let dis = document.getElementById("dis")
+dis.innerHTML =`total items in a cart is ${len}`;
+let pri = document.getElementById("pri");
+pri.innerHTML = `total cost of the cart is ₹${sum}`;
+
+function pay() {
+  window.location.href = "payment.html";
+}
+</script>

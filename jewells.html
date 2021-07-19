@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Jewells</title>
+</head>
+<body>
+  <form id="form">
+      <input type="text" id="name" placeholder="name"></br>
+      <input type="number" id="price" placeholder="price"></br>
+      <input type="text" id="img" placeholder="image url"></br>
+  </form>
+  <button id="add" onclick="jewells()">Add jewells</button>
+</body>
+</html>
+<script>
+    function jewells() {
+        let form = document.getElementById("form");
+        let name = form.name.value;
+        let price = form.price.value;
+        let img = form.img.value;
+        
+        if(name== "" || img == "" || price == "") {
+            alert("one or more fields are empty");
+            return;
+        }
+        
+        let jewell = {
+            name,
+            price,
+            img,
+        };
+        let arr = JSON.parse(localStorage.getItem("jewells"));
+        if(arr == null) {
+            arr = [];
+            arr.push(jewell);
+        }
+        else {
+            arr = JSON.parse(localStorage.getItem("jewells"));
+            var k = 0;
+            for(i=0; i<arr.length; i++) {
+                var c = 0;
+                for(key in jewell) {
+                    if(arr[i][key] == jewell[key]) {
+                        c++;
+                        break;
+                    }
+                }
+                if(c>0) {
+                 k++;
+                 break;
+                }
+            }
+            if(k > 0) {
+                alert("jewell already added");
+                return;
+            }
+            else {
+              arr.push(jewell);
+            }
+        }
+        localStorage.setItem("jewells", JSON.stringify(arr));
+    }
+</script>
